@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "nwuCdUO9vMrZi/Y0ZIgUjsXrQ5q2sf8jmri/7+epfOM=",
+  "Hash": "hkr0hZf35Sg86sVRg+1kt92PXH+JY/qQBfXivXO2oX8=",
   "Source": "Eccomerce-Full-Stack",
   "BasePath": "_content/Eccomerce-Full-Stack",
   "Mode": "Default",
@@ -55,6 +55,25 @@
       "OriginalItemSpec": "/Users/layhak/dev-project/dotnet/Eccomerce-Full-Stack/obj/Debug/net8.0/scopedcss/projectbundle/Eccomerce-Full-Stack.bundle.scp.css"
     },
     {
+      "Identity": "/Users/layhak/dev-project/dotnet/Eccomerce-Full-Stack/wwwroot/css/output.css",
+      "SourceId": "Eccomerce-Full-Stack",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/layhak/dev-project/dotnet/Eccomerce-Full-Stack/wwwroot/",
+      "BasePath": "_content/Eccomerce-Full-Stack",
+      "RelativePath": "css/output.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/output.css"
+    },
+    {
       "Identity": "/Users/layhak/dev-project/dotnet/Eccomerce-Full-Stack/wwwroot/css/site.css",
       "SourceId": "Eccomerce-Full-Stack",
       "SourceType": "Discovered",
@@ -74,12 +93,12 @@
       "OriginalItemSpec": "wwwroot/css/site.css"
     },
     {
-      "Identity": "/Users/layhak/dev-project/dotnet/Eccomerce-Full-Stack/wwwroot/css/style.css",
+      "Identity": "/Users/layhak/dev-project/dotnet/Eccomerce-Full-Stack/wwwroot/css/styles.css",
       "SourceId": "Eccomerce-Full-Stack",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/layhak/dev-project/dotnet/Eccomerce-Full-Stack/wwwroot/",
       "BasePath": "_content/Eccomerce-Full-Stack",
-      "RelativePath": "css/style.css",
+      "RelativePath": "css/styles.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -90,7 +109,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/css/style.css"
+      "OriginalItemSpec": "wwwroot/css/styles.css"
     },
     {
       "Identity": "/Users/layhak/dev-project/dotnet/Eccomerce-Full-Stack/wwwroot/favicon.ico",
@@ -110,6 +129,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/favicon.ico"
+    },
+    {
+      "Identity": "/Users/layhak/dev-project/dotnet/Eccomerce-Full-Stack/wwwroot/js/components.js",
+      "SourceId": "Eccomerce-Full-Stack",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/layhak/dev-project/dotnet/Eccomerce-Full-Stack/wwwroot/",
+      "BasePath": "_content/Eccomerce-Full-Stack",
+      "RelativePath": "js/components.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/components.js"
     },
     {
       "Identity": "/Users/layhak/dev-project/dotnet/Eccomerce-Full-Stack/wwwroot/js/site.js",

@@ -5,16 +5,24 @@
       "PackagePath": "staticwebassets/Eccomerce-Full-Stack.bundle.scp.css"
     },
     {
+      "Id": "/Users/layhak/dev-project/dotnet/Eccomerce-Full-Stack/wwwroot/css/output.css",
+      "PackagePath": "staticwebassets/css/output.css"
+    },
+    {
       "Id": "/Users/layhak/dev-project/dotnet/Eccomerce-Full-Stack/wwwroot/css/site.css",
       "PackagePath": "staticwebassets/css/site.css"
     },
     {
-      "Id": "/Users/layhak/dev-project/dotnet/Eccomerce-Full-Stack/wwwroot/css/style.css",
-      "PackagePath": "staticwebassets/css/style.css"
+      "Id": "/Users/layhak/dev-project/dotnet/Eccomerce-Full-Stack/wwwroot/css/styles.css",
+      "PackagePath": "staticwebassets/css/styles.css"
     },
     {
       "Id": "/Users/layhak/dev-project/dotnet/Eccomerce-Full-Stack/wwwroot/favicon.ico",
       "PackagePath": "staticwebassets/favicon.ico"
+    },
+    {
+      "Id": "/Users/layhak/dev-project/dotnet/Eccomerce-Full-Stack/wwwroot/js/components.js",
+      "PackagePath": "staticwebassets/js/components.js"
     },
     {
       "Id": "/Users/layhak/dev-project/dotnet/Eccomerce-Full-Stack/wwwroot/js/site.js",
