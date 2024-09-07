@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Eccomerce-Full-Stack")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d9ca2e1baa7168b36a8184dc3abd2014dd53098e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+484393bc6775eeacbf537c35a86d06bd28d9f2dc")]
 [assembly: System.Reflection.AssemblyProductAttribute("Eccomerce-Full-Stack")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Eccomerce-Full-Stack")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
