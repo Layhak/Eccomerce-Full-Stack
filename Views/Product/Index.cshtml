@@ -56,7 +56,8 @@
                 @Html.DisplayFor(modelItem => item.Quantity)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Image)
+                <img src="uploads/@Html.DisplayFor(modelItem => item.Image)" alt="Product Image" style="width: 100px; height: 50px"/>
+
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Category.CategoryName)

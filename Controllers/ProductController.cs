@@ -13,10 +13,12 @@ namespace Eccomerce_Full_Stack.Controllers
     public class ProductController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public ProductController(ApplicationDbContext context)
+        public ProductController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         // GET: Product
@@ -25,6 +27,7 @@ namespace Eccomerce_Full_Stack.Controllers
             var applicationDbContext = _context.Product.Include(p => p.Category);
             return View(await applicationDbContext.ToListAsync());
         }
+
 
         // GET: Product/Details/5
         public async Task<IActionResult> Details(Guid? id)
@@ -52,20 +55,36 @@ namespace Eccomerce_Full_Stack.Controllers
             return View();
         }
 
+        private string UploadFile(IFormFile file)
+        {
+            if (file.Equals(null)) return "";
+            var directoryName = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
+            var path = string.Concat(Guid.NewGuid().ToString(), file.FileName);
+            var fullPath = Path.Combine(directoryName, path);
+            using var stream = new FileStream(fullPath, FileMode.Create);
+            file.CopyTo(stream);
+            return path;
+
+        }
+
         // POST: Product/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductId,CategoryId,ProductName,Description,StoreId,Price,Quantity,Image")] Product product)
+        public async Task<IActionResult> Create(
+            [Bind("ProductId,CategoryId,ProductName,Description,StoreId,Price,Quantity,File")]
+            Product product)
         {
             if (ModelState.IsValid)
             {
                 product.ProductId = Guid.NewGuid();
+                product.Image = UploadFile(product.File);
                 _context.Add(product);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
             ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "CategoryName", product.CategoryId);
             return View(product);
         }
@@ -83,6 +102,7 @@ namespace Eccomerce_Full_Stack.Controllers
             {
                 return NotFound();
             }
+
             ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "CategoryName", product.CategoryId);
             return View(product);
         }
@@ -92,7 +112,9 @@ namespace Eccomerce_Full_Stack.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("ProductId,CategoryId,ProductName,Description,StoreId,Price,Quantity,Image")] Product product)
+        public async Task<IActionResult> Edit(Guid id,
+            [Bind("ProductId,CategoryId,ProductName,Description,StoreId,Price,Quantity,Image")]
+            Product product)
         {
             if (id != product.ProductId)
             {
@@ -117,8 +139,10 @@ namespace Eccomerce_Full_Stack.Controllers
                         throw;
                     }
                 }
+
                 return RedirectToAction(nameof(Index));
             }
+
             ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "CategoryName", product.CategoryId);
             return View(product);
         }

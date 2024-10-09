@@ -20,6 +20,8 @@ public class Product
     public double Price { get; set; }
     public int Quantity { get; set; }
     public string? Image { get; set; }
+    [NotMapped]
+    public IFormFile? File { get; set; }
     public Category? Category { get; set; }
 
 }

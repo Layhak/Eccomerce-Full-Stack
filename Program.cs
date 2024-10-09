@@ -1,15 +1,32 @@
 using Eccomerce_Full_Stack.data;
 using Microsoft.EntityFrameworkCore;
+using DotNetEnv;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configure PostgreSQL DbContext
+// Load environment variables from .env file
+Env.Load();
+
+// Retrieve placeholders from environment variables
+string dbName = Environment.GetEnvironmentVariable("DBNAME");
+string username = Environment.GetEnvironmentVariable("USERNAME");
+string password = Environment.GetEnvironmentVariable("PASSWORD");
+
+// Get the connection string template from appsettings.json
+string connectionStringTemplate = builder.Configuration.GetConnectionString("DefaultConnection");
+
+// Replace placeholders with actual values
+string connectionString = connectionStringTemplate
+    .Replace("{DBNAME}", dbName)
+    .Replace("{USERNAME}", username)
+    .Replace("{PASSWORD}", password);
+
+// Configure PostgreSQL DbContext with the constructed connection string
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(connectionString));
 
-//Configure auto compile
+// Configure auto compile
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
-
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
