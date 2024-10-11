@@ -15,7 +15,7 @@ string connectionString = builder.Configuration.GetConnectionString("DefaultConn
     .Replace("{DB_USERNAME}", Environment.GetEnvironmentVariable("DB_USERNAME") ?? "postgres")
     .Replace("{DB_PASSWORD}", Environment.GetEnvironmentVariable("DB_PASSWORD") ?? "postgres");
 
-// Configure PostgreSQL DbContext with the constructed connection string
+// Configure Postgres DbContext with the constructed connection string
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(connectionString));
 
 // Configure auto compile
