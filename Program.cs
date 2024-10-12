@@ -7,23 +7,16 @@ var builder = WebApplication.CreateBuilder(args);
 // Load environment variables from .env file
 Env.Load();
 
-// Retrieve placeholders from environment variables
-string dbName = Environment.GetEnvironmentVariable("DBNAME");
-string username = Environment.GetEnvironmentVariable("USERNAME");
-string password = Environment.GetEnvironmentVariable("PASSWORD");
-
-// Get the connection string template from appsettings.json
-string connectionStringTemplate = builder.Configuration.GetConnectionString("DefaultConnection");
-
 // Replace placeholders with actual values
-string connectionString = connectionStringTemplate
-    .Replace("{DBNAME}", dbName)
-    .Replace("{USERNAME}", username)
-    .Replace("{PASSWORD}", password);
+string connectionString = builder.Configuration.GetConnectionString("DefaultConnection")!
+    .Replace("{DB_HOST}", Environment.GetEnvironmentVariable("DB_HOST") ?? "localhost")
+    .Replace("{DB_PORT}", Environment.GetEnvironmentVariable("DB_PORT") ?? "5432")
+    .Replace("{DB_NAME}", Environment.GetEnvironmentVariable("DB_NAME") ?? "postgres")
+    .Replace("{DB_USERNAME}", Environment.GetEnvironmentVariable("DB_USERNAME") ?? "postgres")
+    .Replace("{DB_PASSWORD}", Environment.GetEnvironmentVariable("DB_PASSWORD") ?? "postgres");
 
-// Configure PostgreSQL DbContext with the constructed connection string
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseNpgsql(connectionString));
+// Configure Postgres DbContext with the constructed connection string
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(connectionString));
 
 // Configure auto compile
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
