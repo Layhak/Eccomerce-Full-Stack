@@ -1,21 +1,28 @@
 using System.Diagnostics;
+using Eccomerce_Full_Stack.data;
 using Microsoft.AspNetCore.Mvc;
 using Eccomerce_Full_Stack.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Eccomerce_Full_Stack.Controllers;
 
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly ApplicationDbContext _context;
+    private readonly IWebHostEnvironment _webHostEnvironment;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger,ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
     {
         _logger = logger;
+        _context = context;
+        _webHostEnvironment = webHostEnvironment;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        return View();
+        var applicationDbContext = _context.Product.Include(p => p.Category);
+        return View( await applicationDbContext.ToListAsync());
     }
 
     public IActionResult Privacy()
