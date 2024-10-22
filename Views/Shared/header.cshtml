@@ -1,6 +1,4 @@
-﻿<div class="overflow-auto bg-white">
-
-    <div x-data="{ open: false }" @@keydown.window.escape="open = false" class="bg-white">
+﻿    <div x-data="{ open: false }" @@keydown.window.escape="open = false" class="bg-white">
         <!-- Mobile menu -->
 
         <div x-show="open" class="relative z-50 lg:hidden"
@@ -314,9 +312,7 @@
 
             </div>
         </div>
-
-
-        <header class="relative bg-white">
+        <header class="relative bg-white z-50">
             <p
                 class="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
                 Get free delivery on orders over $100</p>
@@ -347,7 +343,7 @@
                         <div class="hidden lg:ml-8 lg:block lg:self-stretch" x-data="Components.popoverGroup()"
                              x-init="init()">
                             <div class="flex h-full space-x-8">
-                                <div class="flex" x-data="Components.popover({ open: true, focus: false })"
+                                <div class="flex" x-data="Components.popover({ open: false, focus: false })"
                                      x-init="init()" @@keydown.escape="onEscape"
                                      @@close-popover-group.window="onClosePopoverGroup">
                                     <div class="relative flex">
@@ -707,4 +703,3 @@
             </nav>
         </header>
     </div>
-</div>
