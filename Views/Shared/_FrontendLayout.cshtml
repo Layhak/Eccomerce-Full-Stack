@@ -7,14 +7,7 @@
     <link href="~/css/output.css" rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
 </head>
-<body class="bg-blue-50">
-<!--
-This example requires Tailwind CSS v2.0+
-
-The alpine.js code is *NOT* production ready and is included to preview
-possible interactivity
--->
-
+<body class="bg-gray-800">
 <header class="relative isolate flex items-center gap-x-6 overflow-hidden bg-blue-50 px-6 py-2.5 sm:px-3.5 sm:justify-center">
     <div class="absolute left-[max(-7rem,calc(50%-52rem))] top-1/2 -z-10 -translate-y-1/2 transform-gpu blur-2xl" aria-hidden="true">
         <div class="aspect-[577/310] w-[36.0625rem] bg-gradient-to-r from-[#0369a1] to-[#7dd3fc] opacity-30" style="clip-path: polygon(74.8% 41.9%, 97.2% 73.2%, 100% 34.9%, 92.5% 0.4%, 87.5% 0%, 75% 28.6%, 58.5% 54.6%, 50.1% 56.8%, 46.9% 44%, 48.3% 17.4%, 24.7% 53.9%, 0% 27.9%, 11.9% 74.2%, 24.9% 54.1%, 68.6% 100%, 74.8% 41.9%)"></div>
@@ -35,59 +28,59 @@ possible interactivity
 
 <partial name="header"/>
 
-<div x-data="{ open: false }" @@keydown.window.escape="open = false" class="bg-white">
+<div x-data="{ open: false }" @@keydown.window.escape="open = false" class="bg-white dark:bg-gray-800 dark:text-white">
     
     <main>
         @RenderBody()
     </main>
 
-    <footer aria-labelledby="footer-heading" class="bg-white">
+    <footer aria-labelledby="footer-heading" class="bg-white dark:text-gray-100 dark:bg-gray-800">
         <h2 id="footer-heading" class="sr-only">Footer</h2>
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="py-20 xl:grid xl:grid-cols-3 xl:gap-8">
                 <div class="grid grid-cols-2 gap-8 xl:col-span-2">
                     <div class="space-y-16 md:grid md:grid-cols-2 md:gap-8 md:space-y-0">
                         <div>
-                            <h3 class="text-sm font-medium text-gray-900">Shop</h3>
+                            <h3 class="text-sm font-medium text-gray-900 dark:text-gray-100">Shop</h3>
                             <ul role="list" class="mt-6 space-y-6">
                                 <li class="text-sm">
-                                    <a href="#" class="text-gray-500 hover:text-gray-600">Bags</a>
+                                    <a href="#" class="text-gray-500 dark:text-gray-100 hover:text-gray-600">Bags</a>
                                 </li>
                                 <li class="text-sm">
-                                    <a href="#" class="text-gray-500 hover:text-gray-600">Tees</a>
+                                    <a href="#" class="text-gray-500 dark:text-gray-100 hover:text-gray-600">Tees</a>
                                 </li>
                                 <li class="text-sm">
-                                    <a href="#" class="text-gray-500 hover:text-gray-600">Objects</a>
+                                    <a href="#" class="text-gray-500 dark:text-gray-100 hover:text-gray-600">Objects</a>
                                 </li>
                                 <li class="text-sm">
-                                    <a href="#" class="text-gray-500 hover:text-gray-600">Home Goods</a>
+                                    <a href="#" class="text-gray-500 dark:text-gray-100 hover:text-gray-600">Home Goods</a>
                                 </li>
                                 <li class="text-sm">
-                                    <a href="#" class="text-gray-500 hover:text-gray-600">Accessories</a>
+                                    <a href="#" class="text-gray-500 dark:text-gray-100 hover:text-gray-600">Accessories</a>
                                 </li>
 
                             </ul>
                         </div>
                         <div>
-                            <h3 class="text-sm font-medium text-gray-900">Company</h3>
+                            <h3 class="text-sm font-medium text-gray-900 dark:text-gray-100">Company</h3>
                             <ul role="list" class="mt-6 space-y-6">
                                 <li class="text-sm">
-                                    <a href="#" class="text-gray-500 hover:text-gray-600">Who we are</a>
+                                    <a href="#" class="text-gray-500 dark:text-gray-100 hover:text-gray-600">Who we are</a>
                                 </li>
                                 <li class="text-sm">
-                                    <a href="#" class="text-gray-500 hover:text-gray-600">Sustainability</a>
+                                    <a href="#" class="text-gray-500 dark:text-gray-100 hover:text-gray-600">Sustainability</a>
                                 </li>
                                 <li class="text-sm">
-                                    <a href="#" class="text-gray-500 hover:text-gray-600">Press</a>
+                                    <a href="#" class="text-gray-500 dark:text-gray-100 hover:text-gray-600">Press</a>
                                 </li>
                                 <li class="text-sm">
-                                    <a href="#" class="text-gray-500 hover:text-gray-600">Careers</a>
+                                    <a href="#" class="text-gray-500 dark:text-gray-100 hover:text-gray-600">Careers</a>
                                 </li>
                                 <li class="text-sm">
-                                    <a href="#" class="text-gray-500 hover:text-gray-600">Terms &amp; Conditions</a>
+                                    <a href="#" class="text-gray-500 dark:text-gray-100 hover:text-gray-600">Terms &amp; Conditions</a>
                                 </li>
                                 <li class="text-sm">
-                                    <a href="#" class="text-gray-500 hover:text-gray-600">Privacy</a>
+                                    <a href="#" class="text-gray-500 dark:text-gray-100 hover:text-gray-600">Privacy</a>
                                 </li>
 
                             </ul>
@@ -95,34 +88,34 @@ possible interactivity
                     </div>
                     <div class="space-y-16 md:grid md:grid-cols-2 md:gap-8 md:space-y-0">
                         <div>
-                            <h3 class="text-sm font-medium text-gray-900">Account</h3>
+                            <h3 class="text-sm font-medium text-gray-900 dark:text-gray-100">Account</h3>
                             <ul role="list" class="mt-6 space-y-6">
                                 <li class="text-sm">
-                                    <a href="#" class="text-gray-500 hover:text-gray-600">Manage Account</a>
+                                    <a href="#" class="text-gray-500 dark:text-gray-100 hover:text-gray-600">Manage Account</a>
                                 </li>
                                 <li class="text-sm">
-                                    <a href="#" class="text-gray-500 hover:text-gray-600">Returns &amp; Exchanges</a>
+                                    <a href="#" class="text-gray-500 dark:text-gray-100 hover:text-gray-600">Returns &amp; Exchanges</a>
                                 </li>
                                 <li class="text-sm">
-                                    <a href="#" class="text-gray-500 hover:text-gray-600">Redeem a Gift Card</a>
+                                    <a href="#" class="text-gray-500 dark:text-gray-100 hover:text-gray-600">Redeem a Gift Card</a>
                                 </li>
 
                             </ul>
                         </div>
                         <div>
-                            <h3 class="text-sm font-medium text-gray-900">Connect</h3>
+                            <h3 class="text-sm font-medium text-gray-900 dark:text-gray-100">Connect</h3>
                             <ul role="list" class="mt-6 space-y-6">
                                 <li class="text-sm">
-                                    <a href="#" class="text-gray-500 hover:text-gray-600">Contact Us</a>
+                                    <a href="#" class="text-gray-500 dark:text-gray-100 hover:text-gray-600">Contact Us</a>
                                 </li>
                                 <li class="text-sm">
-                                    <a href="#" class="text-gray-500 hover:text-gray-600">Twitter</a>
+                                    <a href="#" class="text-gray-500 dark:text-gray-100 hover:text-gray-600">Twitter</a>
                                 </li>
                                 <li class="text-sm">
-                                    <a href="#" class="text-gray-500 hover:text-gray-600">Instagram</a>
+                                    <a href="#" class="text-gray-500 dark:text-gray-100 hover:text-gray-600">Instagram</a>
                                 </li>
                                 <li class="text-sm">
-                                    <a href="#" class="text-gray-500 hover:text-gray-600">Pinterest</a>
+                                    <a href="#" class="text-gray-500 dark:text-gray-100 hover:text-gray-600">Pinterest</a>
                                 </li>
 
                             </ul>
@@ -130,7 +123,7 @@ possible interactivity
                     </div>
                 </div>
                 <div class="mt-16 md:mt-16 xl:mt-0">
-                    <h3 class="text-sm font-medium text-gray-900">Sign up for our newsletter</h3>
+                    <h3 class="text-sm font-medium text-gray-900 dark:text-gray-100">Sign up for our newsletter</h3>
                     <p class="mt-6 text-sm text-gray-500">The latest deals and savings, sent to your inbox weekly.</p>
                     <form class="mt-2 flex sm:max-w-md">
                         <label for="email-address" class="sr-only">Email address</label>
