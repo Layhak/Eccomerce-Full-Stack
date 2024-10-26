@@ -1,0 +1,69 @@
+@model List<Eccomerce_Full_Stack.Models.CartItem>
+
+@{
+ViewData["Title"] = "Your Cart";
+Layout = "_FrontendLayout";
+}
+
+<div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+    <h2 class="text-xl font-bold text-gray-900">Your Shopping Cart</h2>
+    <div x-data="cart()" x-init="loadCart()" class="mt-8">
+        <template x-if="cartItems.length > 0">
+            <div>
+                <template x-for="item in cartItems" :key="item.id">
+                    <div class="flex justify-between items-center border-b py-4">
+                        <div class="flex items-center">
+                            <img :src="'../uploads/' + item.image" alt="Product image" class="h-16 w-16 object-cover mr-4">
+                            <div>
+                                <h3 class="text-sm font-medium text-gray-900" x-text="item.name"></h3>
+                                <p class="text-sm text-gray-500" x-text="'$' + item.price.toFixed(2)"></p>
+                                <div class="flex items-center mt-2">
+                                    <button @@click="decreaseQuantity(item)" class="p-2 bg-gray-200 rounded">-</button>
+                                    <span class="mx-2" x-text="item.quantity"></span>
+                                    <button @@click="increaseQuantity(item)" class="p-2 bg-gray-200 rounded">+</button>
+                                </div>
+                            </div>
+                        </div>
+                        <button @@click="removeFromCart(item.id)" class="text-red-500 hover:text-red-700">Remove</button>
+                    </div>
+                </template>
+            </div>
+        </template>
+        <template x-if="cartItems.length === 0">
+            <p class="text-sm text-gray-500">Your cart is empty.</p>
+        </template>
+    </div>
+</div>
+
+<script>
+    function cart() {
+        return {
+            cartItems: [],
+            loadCart() {
+                this.cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            },
+            increaseQuantity(item) {
+                item.quantity++;
+                this.saveCart();
+            },
+            decreaseQuantity(item) {
+                if (item.quantity > 1) {
+                    item.quantity--;
+                    this.saveCart();
+                }
+            },
+            removeFromCart(productId) {
+                this.cartItems = this.cartItems.filter(item => item.id !== productId);
+                this.saveCart();
+            },
+            saveCart() {
+                localStorage.setItem('cart', JSON.stringify(this.cartItems));
+                this.updateCartCount();
+            },
+            updateCartCount() {
+                const totalItems = this.cartItems.reduce((total, item) => total + item.quantity, 0);
+                document.getElementById('cart-count').innerText = totalItems;
+            }
+        }
+    }
+</script>
