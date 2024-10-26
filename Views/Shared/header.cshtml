@@ -658,6 +658,7 @@
 
                         <div class="ml-auto flex items-center">
                             <div class="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
+                                <button type="button" x-data @@click="$store.darkMode.toggle()" class="text-sm font-medium text-gray-700 dark:text-gray-100 hover:text-gray-800" x-text="$store.darkMode.on ? 'Light' :'Dark' ">Theme</button>
                                 <a href="#" class="text-sm font-medium text-gray-700 dark:text-gray-100 hover:text-gray-800">Sign in</a>
                                 <span class="h-6 w-px bg-gray-200" aria-hidden="true"></span>
                                 <a href="#" class="text-sm font-medium text-gray-700 dark:text-gray-100 hover:text-gray-800">Create
@@ -706,3 +707,20 @@
             </nav>
         </header>
     </div>
+
+    <script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.store('darkMode', {
+            init() {
+                this.on = window.matchMedia('(prefers-color-scheme: dark)').matches
+                document.documentElement.classList.toggle('dark', this.on)
+            },
+            on: true,
+
+            toggle() {
+                this.on = ! this.on
+                document.documentElement.classList.toggle('dark', this.on)
+            }
+        })
+    })
+</script>
