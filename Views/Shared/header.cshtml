@@ -658,7 +658,7 @@
 
                         <div class="ml-auto flex items-center">
                             <div class="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                                <button type="button" x-data @@click="$store.darkMode.toggle()" class="text-sm font-medium text-gray-700 dark:text-gray-100 hover:text-gray-800" x-text="$store.darkMode.on ? 'Light' :'Dark' ">Theme</button>
+                                
                                 <a href="#" class="text-sm font-medium text-gray-700 dark:text-gray-100 hover:text-gray-800">Sign in</a>
                                 <span class="h-6 w-px bg-gray-200" aria-hidden="true"></span>
                                 <a href="#" class="text-sm font-medium text-gray-700 dark:text-gray-100 hover:text-gray-800">Create
@@ -669,7 +669,7 @@
                                 <a href="#" class="flex items-center text-gray-700 dark:text-gray-100 hover:text-gray-800">
                                     <img src="https://tailwindui.com/img/flags/flag-canada.svg" alt=""
                                          class="block h-auto w-5 flex-shrink-0">
-                                    <span class="ml-3 block text-sm font-medium">CAD</span>
+                                    <span class="ml-3 block text-sm font-medium">CAD </span>
                                     <span class="sr-only">, change currency</span>
                                 </a>
                             </div>
@@ -688,7 +688,7 @@
                             </div>
 
                             <!-- Cart -->
-                            <div class="ml-4 flow-root lg:ml-6">
+                            <div class="ml-4 flow-root lg:ml-4">
                                 <a href="/Cart/Index" class="group -m-2 flex items-center p-2">
                                     <svg class="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500 dark:hover:text-gray-100"
                                          fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -697,30 +697,37 @@
                                               d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z">
                                         </path>
                                     </svg>
-                                    <span id="cart-count" class="ml-2 text-sm font-medium text-gray-700 dark:text-gray-100 dark:group-hover:text-gray-100 group-hover:text-gray-800">0</span>
+                                    <span
+                                        class="ml-2 text-sm font-medium text-gray-700 dark:text-gray-100 dark:group-hover:text-gray-100 group-hover:text-gray-800"
+                                        x-data="{products: $persist([]).as('cart') }" @@set-cart.window="()=>{
+                                        const product = $event.detail
+                                        const existingItem = products.find(item => item.id === product.id)
+                                        if (existingItem) {
+                                            products.map((p)=>{
+                                                if(p.id===product.id){
+                                                    return {...p,qty: p.qty++}
+                                                }
+                                                return p
+                                            })
+                                        } else {
+                                            products.push(product)
+                                        }
+                                        }" x-text="products.length">0</span>
                                     <span class="sr-only">items in cart, view bag</span>
                                 </a>
                             </div>
+
+                            <button type="button"
+                                    x-data="{darkMode: $persist(false).as('darkMode')}"
+                                    x-init="document.documentElement.classList.toggle('dark', darkMode)"
+                                    @@click="() => {darkMode = !darkMode; document.documentElement.classList.toggle('dark', darkMode)}"
+                                    class="text-sm font-medium text-gray-700 dark:text-gray-100 hover:text-gray-800 ml-4 lg:ml-3"
+                                    x-text="darkMode ? 'Light' :'Dark' ">
+                                Theme
+                            </button>
                         </div>
                     </div>
                 </div>
             </nav>
         </header>
     </div>
-
-    <script>
-    document.addEventListener('alpine:init', () => {
-        Alpine.store('darkMode', {
-            init() {
-                this.on = window.matchMedia('(prefers-color-scheme: dark)').matches
-                document.documentElement.classList.toggle('dark', this.on)
-            },
-            on: true,
-
-            toggle() {
-                this.on = ! this.on
-                document.documentElement.classList.toggle('dark', this.on)
-            }
-        })
-    })
-</script>

@@ -30,7 +30,7 @@
         </div>
     </div>
     <div class="mt-6 p-2">
-        <button @@click="addToCart({ id: '@Model.ProductId', name: '@Model.ProductName', price: '@Model.Price',image: '@Model.Image' })"
+        <button @@click="$dispatch('set-cart',{ id: '@Model.ProductId', name: '@Model.ProductName', price: '@Model.Price',image: '@Model.Image', qty: 1 })"
                 class="relative flex items-center justify-center rounded-md border border-transparent bg-gray-100 px-8 py-2 text-sm font-medium text-gray-900 hover:bg-gray-200">
             Add to bag
         </button>
