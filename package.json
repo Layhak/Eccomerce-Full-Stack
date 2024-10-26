@@ -3,11 +3,13 @@
   "module": "index.ts",
   "type": "module",
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "concurrently": "^9.0.0"
   },
   "scripts": {
-    "dev":"tailwindcss -i ./wwwroot/css/styles.css -o ./wwwroot/css/output.css --watch",
-    "build":"tailwindcss -i ./wwwroot/css/styles.css -o ./wwwroot/css/output.css"
+    "dev": "concurrently \"dotnet watch run\" \"bun run tailwind\"",
+    "tailwind": "tailwindcss -i ./wwwroot/css/styles.css -o ./wwwroot/css/output.css --watch",
+    "build": "tailwindcss -i ./wwwroot/css/styles.css -o ./wwwroot/css/output.css"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
