@@ -1,8 +1,10 @@
 @model Eccomerce_Full_Stack.Models.Product
 
 @{
-    ViewData["Title"] = "Edit";
-    Layout = "_AdminLayout";
+ViewData["Title"] = "Edit";
+Layout = "_AdminLayout";
+const string label_class = "block mb-2 text-sm font-medium text-gray-900 dark:text-white";
+const string input_class = "shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500";
 }
 
 <h1>Edit</h1>
@@ -11,55 +13,71 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Edit" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ProductId" />
             <div class="form-group">
-                <label asp-for="CategoryId" class="control-label"></label>
-                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                <label asp-for="CategoryId" class="@label_class"></label>
+                <select asp-for="CategoryId" class="@input_class" asp-items="ViewBag.CategoryId"></select>
                 <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ProductName" class="control-label"></label>
-                <input asp-for="ProductName" class="form-control" />
+                <label asp-for="ProductName" class="@label_class"></label>
+                <input asp-for="ProductName" class="@input_class" />
                 <span asp-validation-for="ProductName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <textarea asp-for="Description" class="form-control"></textarea>
+                <label asp-for="Description" class="@label_class"></label>
+                <textarea asp-for="Description" class="@input_class"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
+            @* <div class="form-group"> *@
+            @*     <label asp-for="StoreId" class="@label_class"></label> *@
+            @*     <input asp-for="StoreId" class="@input_class" /> *@
+            @*     <span asp-validation-for="StoreId" class="text-danger"></span> *@
+            @* </div> *@
             <div class="form-group">
-                <label asp-for="StoreId" class="control-label"></label>
-                <input asp-for="StoreId" class="form-control" />
-                <span asp-validation-for="StoreId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
+                <label asp-for="Price" class="@label_class"></label>
+                <input asp-for="Price" class="@input_class" />
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Quantity" class="control-label"></label>
-                <input asp-for="Quantity" class="form-control" />
+                <label asp-for="Quantity" class="@label_class"></label>
+                <input asp-for="Quantity" class="@input_class" />
                 <span asp-validation-for="Quantity" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Image" class="control-label"></label>
-                <input asp-for="Image" class="form-control" />
-                <span asp-validation-for="Image" class="text-danger"></span>
+                <label asp-for="File" class="@label_class"></label>
+                <div class="flex items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600 relative">
+                    <div id="preview-container" class="absolute top-5 left-5 @((Model.Image != null) ? "" : "hidden")">
+                        <div class="w-24 h-24 overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-600">
+                            <img id="preview-image" class="w-full h-full object-cover" src="/uploads/@Url.Content(Model.Image)" alt="Image Preview" />
+                        </div>
+                    </div>
+                    <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-full cursor-pointer">
+                        <div id="upload-placeholder" class="flex flex-col items-center justify-center @((Model.File != null) ? "hidden" : "")">
+                            <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                            </svg>
+                            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                        </div>
+                        <input id="dropzone-file" type="file" asp-for="File" class="hidden" accept="image/*" />
+                        <span asp-validation-for="File" class="text-danger"></span>
+                    </label>
+                </div>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save" class="inline-flex justify-center items-center py-2 px-6 w-1/2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 sm:w-auto dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="text-blue-700">Back to List</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

@@ -23,17 +23,17 @@
                             </div>
                         </form>
                     </li>
-                    <li>
-                        <a href="{{ url_for('admin_dashboard') }}"
-                           class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700 {{  'dark:bg-gray-700' if sidebar.startswith('dashboard')   }}">
-                            <svg class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
-                                 fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
-                                <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
-                            </svg>
-                            <span class="ml-3" sidebar-toggle-item>Dashboard</span>
-                        </a>
-                    </li>
+                    @* <li> *@
+                    @*     <a href="{{ url_for('admin_dashboard') }}" *@
+                    @*        class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700 {{  'dark:bg-gray-700' if sidebar.startswith('dashboard')   }}"> *@
+                    @*         <svg class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" *@
+                    @*              fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"> *@
+                    @*             <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path> *@
+                    @*             <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path> *@
+                    @*         </svg> *@
+                    @*         <span class="ml-3" sidebar-toggle-item>Dashboard</span> *@
+                    @*     </a> *@
+                    @* </li> *@
                     <li>
                         <a asp-controller="Category" asp-action="Index"
                            class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700 {{  'dark:bg-gray-700' if sidebar.startswith('categories')   }}">
@@ -54,29 +54,29 @@
                             <span class="flex-1 ml-3 whitespace-nowrap" sidebar-toggle-item>Product</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="{{ url_for('admin_users') }}"
-                           class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700 {{  'dark:bg-gray-700' if sidebar.startswith('user')   }}">
-                            <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
-                                 fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"></path>
-                            </svg>
-                            <span class="flex-1 ml-3 whitespace-nowrap" sidebar-toggle-item>Users</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#"
-                           class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700 ">
-                            <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
-                                 fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.707 7.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l2-2a1 1 0 00-1.414-1.414L11 7.586V3a1 1 0 10-2 0v4.586l-.293-.293z"></path>
-                                <path d="M3 5a2 2 0 012-2h1a1 1 0 010 2H5v7h2l1 2h4l1-2h2V5h-1a1 1 0 110-2h1a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"></path>
-                            </svg>
-                            <span class="flex-1 ml-3 whitespace-nowrap" sidebar-toggle-item>Inbox</span>
-                            <span class="inline-flex justify-center items-center p-1 ml-3 w-5 h-5 text-sm font-medium rounded-full text-primary-800 bg-primary-100"
-                                  sidebar-toggle-item>3</span>
-                        </a>
-                    </li>
+                    @* <li> *@
+                    @*     <a href="{{ url_for('admin_users') }}" *@
+                    @*        class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700 {{  'dark:bg-gray-700' if sidebar.startswith('user')   }}"> *@
+                    @*         <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" *@
+                    @*              fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"> *@
+                    @*             <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"></path> *@
+                    @*         </svg> *@
+                    @*         <span class="flex-1 ml-3 whitespace-nowrap" sidebar-toggle-item>Users</span> *@
+                    @*     </a> *@
+                    @* </li> *@
+                    @* <li> *@
+                    @*     <a href="#" *@
+                    @*        class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700 "> *@
+                    @*         <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" *@
+                    @*              fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"> *@
+                    @*             <path d="M8.707 7.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l2-2a1 1 0 00-1.414-1.414L11 7.586V3a1 1 0 10-2 0v4.586l-.293-.293z"></path> *@
+                    @*             <path d="M3 5a2 2 0 012-2h1a1 1 0 010 2H5v7h2l1 2h4l1-2h2V5h-1a1 1 0 110-2h1a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"></path> *@
+                    @*         </svg> *@
+                    @*         <span class="flex-1 ml-3 whitespace-nowrap" sidebar-toggle-item>Inbox</span> *@
+                    @*         <span class="inline-flex justify-center items-center p-1 ml-3 w-5 h-5 text-sm font-medium rounded-full text-primary-800 bg-primary-100" *@
+                    @*               sidebar-toggle-item>3</span> *@
+                    @*     </a> *@
+                    @* </li> *@
                 </ul>
             </div>
         </div>

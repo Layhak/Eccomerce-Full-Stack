@@ -37,7 +37,31 @@
     </div>
 <script src="~/js/site.js" asp-append-version="true"></script>
 <script src="~/js/components.js"></script>
-<script src="~/admin/app.bundle.js"></script>
+    <script src="~/admin/app.bundle.js"></script>
+
+    <script>
+        document.getElementById('dropzone-file').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            const previewImage = document.getElementById('preview-image');
+            const previewContainer = document.getElementById('preview-container');
+            const placeholder = document.getElementById('upload-placeholder');
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    previewImage.src = e.target.result;
+                    previewContainer.classList.remove('hidden');
+                    placeholder.classList.add('hidden');
+                }
+                reader.readAsDataURL(file);
+            } else {
+                previewImage.src = '';
+                previewContainer.classList.add('hidden');
+                placeholder.classList.remove('hidden');
+            }
+        });
+    </script>
 @await RenderSectionAsync("Scripts", false)
+
 </body>
 </html>

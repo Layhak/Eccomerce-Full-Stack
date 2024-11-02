@@ -109,7 +109,7 @@ namespace Eccomerce_Full_Stack.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid id,
-            [Bind("ProductId,CategoryId,ProductName,Description,StoreId,Price,Quantity,Image")]
+            [Bind("ProductId,CategoryId,ProductName,Description,StoreId,Price,Quantity,File")]
             Product product)
         {
             if (id != product.ProductId)
@@ -121,6 +121,7 @@ namespace Eccomerce_Full_Stack.Controllers
             {
                 try
                 {
+                    product.Image = UploadFile(product.File);
                     _context.Update(product);
                     await _context.SaveChangesAsync();
                 }

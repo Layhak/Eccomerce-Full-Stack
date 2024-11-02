@@ -1,34 +1,32 @@
 @model Eccomerce_Full_Stack.Models.Category
 
 @{
-    ViewData["Title"] = "Create";
-    Layout = "_AdminLayout";
+ViewData["Title"] = "Create";
+Layout = "_AdminLayout";
+const string label_class = "block mb-2 text-sm font-medium text-gray-900 dark:text-white";
+const string input_class = "shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500";
 }
 
-<h1>Create</h1>
+<h1 class="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100">Create Category</h1>
 
-<h4>Category</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create" class="flex items-center justify-center bg-white p-8">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="mx-auto w-full max-w-xs">
-                <label asp-for="CategoryName"  class="block text-sm font-medium leading-6 text-gray-900"></label>
-                <input asp-for="CategoryName" class="block w-full min-w-0 flex-1 rounded-none rounded-r-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
-                <span asp-validation-for="CategoryName" class="text-red-500 text-sm"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="rounded bg-indigo-600 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" />
-            </div>
-        </form>
-    </div>
+<div class="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6">
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-red-500 mb-4"></div>
+        <div class="form-group">
+            <label asp-for="CategoryName" class="@label_class"></label>
+            <input asp-for="CategoryName" class="@input_class" />
+            <span asp-validation-for="CategoryName" class="text-red-500 text-sm"></span>
+        </div>
+        <div class="mt-4">
+            <button type="submit" class="inline-flex justify-center items-center py-2 px-6 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg focus:ring-4 focus:ring-indigo-300 dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:focus:ring-indigo-600">Create</button>
+        </div>
+    </form>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+<div class="mt-6">
+    <a asp-action="Index" class="inline-block text-blue-700 hover:underline dark:text-blue-400">Back to List</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
