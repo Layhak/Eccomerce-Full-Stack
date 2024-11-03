@@ -31,14 +31,12 @@
             <main class="p-4">
                 @RenderBody()
             </main>
-
             <partial name="admin/footer"/>
         </div>
     </div>
-<script src="~/js/site.js" asp-append-version="true"></script>
-<script src="~/js/components.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/components.js"></script>
     <script src="~/admin/app.bundle.js"></script>
-
     <script>
         document.getElementById('dropzone-file').addEventListener('change', function(event) {
             const file = event.target.files[0];
