@@ -11,4 +11,6 @@ public class Category
     [MaxLength(50)]
     [Display(Name = "Category Name")]
     public string? CategoryName { get; set; }
+
+    public string? CategoryDescription { get; set; }
 }

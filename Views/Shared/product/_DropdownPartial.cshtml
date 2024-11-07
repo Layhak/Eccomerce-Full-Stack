@@ -1,0 +1,11 @@
+@model Eccomerce_Full_Stack.Models.DropdownModels
+
+<h1>Dropdown List</h1>
+<ul>
+    @foreach (var item in Model.Models)
+    {
+        <li>
+            <a href="@item.Href">@item.Label</a>
+        </li>
+    }
+</ul>

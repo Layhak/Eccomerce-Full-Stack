@@ -1,6 +1,9 @@
+using System.Configuration;
 using Eccomerce_Full_Stack.data;
 using Microsoft.EntityFrameworkCore;
 using DotNetEnv;
+using Eccomerce_Full_Stack.Models;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,16 +16,25 @@ string connectionString = builder.Configuration.GetConnectionString("DefaultConn
     .Replace("{DB_PORT}", Environment.GetEnvironmentVariable("DB_PORT") ?? "5432")
     .Replace("{DB_NAME}", Environment.GetEnvironmentVariable("DB_NAME") ?? "postgres")
     .Replace("{DB_USERNAME}", Environment.GetEnvironmentVariable("DB_USERNAME") ?? "postgres")
-    .Replace("{DB_PASSWORD}", Environment.GetEnvironmentVariable("DB_PASSWORD") ?? "postgres");
+    .Replace("{DB_PASSWORD}", Environment.GetEnvironmentVariable("DB_PASSWORD") ?? "postgres")
+    .Replace("{SCHEMA_NAME}", Environment.GetEnvironmentVariable("SCHEMA_NAME") ?? "public");
 
 // Configure Postgres DbContext with the constructed connection string
-builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(connectionString));
+builder.Services.AddDbContext<ApplicationDbContext>(
+    options => options.UseNpgsql(
+        connectionString,
+        x=>x.MigrationsHistoryTable("__EFMigrationsHistory",
+                                                        builder.Configuration.GetConnectionString(("DevEnv")))));
 
 // Configure auto compile
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders();
 
 // Configure session state
 builder.Services.AddDistributedMemoryCache();
@@ -54,7 +66,7 @@ app.UseRouting();
 app.UseSession();
 
 app.UseAuthorization();
-
+app.UseAuthentication();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

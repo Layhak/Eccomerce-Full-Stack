@@ -17,7 +17,8 @@ public class Product
     public string? ProductName { get; set; }
     [MaxLength(500)]
     [DataType(DataType.MultilineText)]
-    public string? Description { get; set; }
+    public string? Remark { get; set; }
+    [ForeignKey("StoreDetail")]
     public string? StoreId { get; set; }
     public double Price { get; set; }
     public int Quantity { get; set; }
