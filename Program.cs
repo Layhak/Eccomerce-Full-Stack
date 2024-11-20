@@ -19,12 +19,14 @@ string connectionString = builder.Configuration.GetConnectionString("DefaultConn
     .Replace("{DB_PASSWORD}", Environment.GetEnvironmentVariable("DB_PASSWORD") ?? "postgres")
     .Replace("{SCHEMA_NAME}", Environment.GetEnvironmentVariable("SCHEMA_NAME") ?? "public");
 
+string devEnv = builder.Configuration["Schema:DevEnv"]
+    .Replace("{SCHEMA_NAME}", Environment.GetEnvironmentVariable("SCHEMA_NAME") ?? "public");
+
 // Configure Postgres DbContext with the constructed connection string
 builder.Services.AddDbContext<ApplicationDbContext>(
     options => options.UseNpgsql(
         connectionString,
-        x=>x.MigrationsHistoryTable("__EFMigrationsHistory",
-                                                        builder.Configuration.GetConnectionString(("DevEnv")))));
+        x => x.MigrationsHistoryTable("__EFMigrationsHistory", devEnv)));
 
 // Configure auto compile
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
@@ -65,8 +67,10 @@ app.UseRouting();
 // Enable session middleware
 app.UseSession();
 
-app.UseAuthorization();
+// Ensure authentication runs before authorization
 app.UseAuthentication();
+app.UseAuthorization();
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

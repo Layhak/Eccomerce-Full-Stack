@@ -38,9 +38,12 @@
     <_ContentIncludedByDefault Remove="Views\Product\Details.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Product\Edit.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Product\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Account\Login.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Account\Register.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Migrations\" />
     <Folder Include="wwwroot\uploads\" />
   </ItemGroup>
 

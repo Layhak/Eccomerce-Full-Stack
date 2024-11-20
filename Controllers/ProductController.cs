@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Eccomerce_Full_Stack.Models;
 using Eccomerce_Full_Stack.data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Eccomerce_Full_Stack.Controllers
 {
+    [Authorize]
     public class ProductController : Controller
     {
         private readonly ApplicationDbContext _context;
